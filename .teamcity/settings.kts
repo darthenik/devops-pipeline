@@ -48,6 +48,10 @@ object Build : BuildType({
         }
     }
 
+    requirments {
+        equals("teamcity.agent.name", "local_agent")
+    }
+
     triggers {
         vcs {
         }
