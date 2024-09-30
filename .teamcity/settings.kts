@@ -39,12 +39,11 @@ object Build : BuildType({
     }
 
     steps {
-        step {
-            name = "Run tests"
-            type = "simpleRunner" // Command line runner type
-
-            param("use.custom.script", "true")
-            param("script.content", "mvn clean test verify") 
+        maven {
+            name = "Run Maven Tests"
+            goals = "clean test verify"  // Define Maven goals to clean, test, and verify
+            runnerArgs = "-DskipTests=false"  // Ensure tests are not skipped
+            jdkHome = "%env.JAVA_HOME%"  // Use the JAVA_HOME environment variable
         }
     }
 
