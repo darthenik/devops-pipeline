@@ -48,7 +48,7 @@ object Build : BuildType({
         }
     }
 
-    requireSments {
+    requirements {
         equals("teamcity.agent.name", "local_agent")
     }
 
