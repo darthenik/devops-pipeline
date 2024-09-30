@@ -39,11 +39,13 @@ object Build : BuildType({
     }
 
     steps {
-        maven {
+        step {
             name = "Run Maven Tests"
-            goals = "clean test verify"  // Define Maven goals to clean, test, and verify
-            runnerArgs = "-DskipTests=false"  // Ensure tests are not skipped
-            jdkHome = "%env.JAVA_HOME%"  // Use the JAVA_HOME environment variable
+            type = "Maven"  // Use the Maven runner type
+            param("goals", "clean test verify")  // Define the Maven goals to run
+            param("runnerArgs", "-DskipTests=false")  // Additional Maven arguments
+            param("pomLocation", "pom.xml")  // Specify the location of the POM file
+            param("target.jdk.home", "%env.JAVA_HOME%")  // Specify the JDK home to use
         }
     }
 
