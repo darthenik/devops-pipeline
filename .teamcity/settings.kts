@@ -41,9 +41,10 @@ object Build : BuildType({
     steps {
         step {
             name = "Run tests"
-            type = "Maven"
-            param("goal", "clean test verify")  // Maven goal for running tests
-            param("runnerArgs", "-DskipTests=false") 
+            type = "simpleRunner" // Command line runner type
+
+            param("use.custom.script", "true")
+            param("script.content", "mvn clean test verify") 
         }
     }
 
