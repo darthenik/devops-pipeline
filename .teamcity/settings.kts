@@ -38,6 +38,14 @@ object Build : BuildType({
         root(DslContext.settingsRoot)
     }
 
+    steps {
+        maven {
+            name = "Run tests"
+            goals = "clean test verify"
+            runnerArgs = "-DskipTests=false"
+        }
+    }
+
     triggers {
         vcs {
         }
