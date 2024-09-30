@@ -39,10 +39,11 @@ object Build : BuildType({
     }
 
     steps {
-        maven {
+        step {
             name = "Run tests"
-            goals = "clean test verify"
-            runnerArgs = "-DskipTests=false"
+            type = "Maven"
+            param("goal", "clean test verify")  // Maven goal for running tests
+            param("runnerArgs", "-DskipTests=false") 
         }
     }
 
