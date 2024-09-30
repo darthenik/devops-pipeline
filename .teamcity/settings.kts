@@ -40,12 +40,11 @@ object Build : BuildType({
 
     steps {
         step {
-            name = "Run Maven Tests"
-            type = "Maven"  // Use the Maven runner type
-            param("goals", "clean test verify")  // Define the Maven goals to run
-            param("runnerArgs", "-DskipTests=false")  // Additional Maven arguments
-            param("pomLocation", "pom.xml")  // Specify the location of the POM file
-            param("target.jdk.home", "%env.JAVA_HOME%")  // Specify the JDK home to use
+            name = "Run tests"
+            type = "simpleRunner" // Command line runner type
+
+            param("use.custom.script", "true")
+            param("script.content", "mvn clean test verify") 
         }
     }
 
